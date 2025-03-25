@@ -1,0 +1,11 @@
+import numpy as np
+arr1 = np.zeros((3,3))
+print(arr1,type(arr1),arr1.ndim,arr1.shape,arr1.dtype)
+arr2 = np.ones((3,3))
+print(arr2,type(arr2),arr2.ndim,arr2.shape,arr2.dtype)
+arr3 = np.eye(4)
+print(arr3,type(arr3),arr3.ndim,arr3.shape,arr3.dtype)
+arr4 = np.arange(1,10,0.5)
+print(arr4,type(arr4),arr4.ndim,arr4.shape,arr4.dtype)
+arr5 = np.array([10,20,30])
+print(arr5,type(arr1),arr5.ndim,arr5.shape,arr5.dtype)
