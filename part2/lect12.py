@@ -1,0 +1,11 @@
+import numpy as np
+arr1 = np.array([10,20,10,20,15,13,17,9])
+arr2 = np.array(['Khalid','Mira','Zaid'])
+print(type(arr1))
+print(arr1.dtype)
+print(type(arr2))
+print(arr2.dtype)
+arr3 = np.array([10,20,0,20],dtype=np.float64)
+print(arr3,arr3.dtype)
+arr4 = arr3.astype(np.int32)
+print(arr4,arr4.dtype)
