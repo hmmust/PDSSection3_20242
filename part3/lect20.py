@@ -16,8 +16,9 @@ student_df.Year.fillna(student_df['Year'].median(),inplace=True)
 student_df.Major=student_df.Major.str.strip()
 student_df.Major.replace({"DSS":'DS'}, #' SE':'SE'                      },
                          inplace=True)
-print(student_df.Major.value_counts())
-
+#print(student_df.Major.value_counts())
+student_df['Year']=student_df['Year'].astype(np.int16)
+print(student_df.dtypes)
 
 
 
