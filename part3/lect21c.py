@@ -7,3 +7,4 @@ students_courses_df = pd.merge(student_df,courses_df,
 students_courses_df = pd.merge(student_df,courses_df,
                                on=['Id'],how='left')
 print(students_courses_df)
+print(students_courses_df.groupby('Id')['GPA'].agg(['mean','count']))
