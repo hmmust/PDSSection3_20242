@@ -1,0 +1,21 @@
+import multiprocessing
+import time
+import pandas as pd
+
+print(multiprocessing.cpu_count())
+def read_csv(filepath):
+    df = pd.read_csv(filepath)
+    df.Major.replace({" SE":"SE","DSS":"DS"},inplace=True)
+    df.Year.fillna(df.Year.median(),inplace=True)
+    return df
+if __name__ == '__main__':
+    sum_pool = multiprocessing.Pool(processes=2)
+    df1 = sum_pool.apply_async(read_csv,args=("./part6/students1.csv",))
+    df2 = sum_pool.apply_async(read_csv,args=("./part6/students2.csv",))
+    # call funtion 
+    sum_pool.close()
+    sum_pool.join()
+    print(df1.get(),df2.get())
+
+    
+    

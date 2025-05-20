@@ -3,19 +3,18 @@ import time
 import pandas as pd
 
 print(multiprocessing.cpu_count())
-def read_csv(filepath):
-    df = pd.read_csv(filepath)
+def read_csv(df):
     df.Major.replace({" SE":"SE","DSS":"DS"},inplace=True)
     df.Year.fillna(df.Year.median(),inplace=True)
     return df
 if __name__ == '__main__':
-    sum_pool = multiprocessing.Pool(processes=2)
-    df1 = sum_pool.apply_async(read_csv,args=("./part6/students1.csv",))
-    df2 = sum_pool.apply_async(read_csv,args=("./part6/students2.csv",))
-    # call funtion 
+    students_df = pd.read_csv('./part4/students.csv',chunksize=4)
+    sum_pool = multiprocessing.Pool(processes=3)
+    chucks =[]
+    for data in students_df:
+        df1 = sum_pool.apply_async(read_csv,args=(data,))
+        chucks.append(df1.get())
     sum_pool.close()
     sum_pool.join()
-    print(df1.get(),df2.get())
-
-    
-    
+    students= pd.concat(chucks,axis=0,ignore_index=True)
+    print(students)    
