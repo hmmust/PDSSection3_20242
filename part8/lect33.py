@@ -12,7 +12,6 @@ class Student(BaseModel):
     Year:int = None
     GPA: float
     Major:str
-
 student_df = pd.read_csv('../part3/students.csv')
 @app.get("/students/{stno}") #decorator function
 def read_student(stno:int): #string
